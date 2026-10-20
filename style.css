@@ -1,0 +1,25 @@
+:root{--bg:#000;--wall:#1d1d1f;--line:#3a3a3d;--silver:#cfcfd4;--text:#f2f2f2;--mute:#9a9aa0;--ok:#8fd19e;--bad:#e58a8a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-family:Rockwell,"Roboto Slab",Georgia,serif;font-weight:700;margin:0 0 .6rem}
+main{max-width:640px;margin:0 auto;padding:0 1rem 3rem}
+.logo{display:block;width:100%;max-width:420px;margin:0 auto;mix-blend-mode:lighten}
+section{background:var(--wall);border:1px solid var(--line);border-radius:6px;padding:1.1rem;margin-top:1rem}
+.svc{display:flex;justify-content:space-between;gap:1rem;width:100%;text-align:left;background:none;color:var(--text);border:0;border-bottom:1px dashed var(--line);padding:.8rem .2rem;font:inherit;cursor:pointer}
+.svc:last-child{border-bottom:0}.svc b{font-family:Rockwell,Georgia,serif;white-space:nowrap}
+.svc[aria-pressed=true]{background:var(--silver);color:#000;border-radius:4px;padding-inline:.6rem}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(76px,1fr));gap:.5rem}
+.slot{padding:.6rem 0;background:none;color:var(--text);border:1px solid var(--silver);border-radius:4px;font:inherit;cursor:pointer}
+.slot[aria-pressed=true]{background:var(--silver);color:#000}
+.slot:disabled{opacity:.3;border-color:var(--line);cursor:not-allowed;text-decoration:line-through}
+label{display:block;margin:.7rem 0 .25rem;color:var(--mute)}
+input{width:100%;padding:.7rem;background:#000;color:var(--text);border:1px solid var(--line);border-radius:4px;font:inherit}
+button.main{width:100%;margin-top:1rem;padding:.9rem;background:var(--silver);color:#000;border:0;border-radius:4px;font:700 1rem Rockwell,Georgia,serif;cursor:pointer}
+button.main:disabled{opacity:.4;cursor:not-allowed}
+button.sm{padding:.35rem .7rem;background:none;color:var(--text);border:1px solid var(--line);border-radius:4px;font:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--silver);outline-offset:2px}
+.msg{margin-top:.8rem;min-height:1.4em}.ok{color:var(--ok)}.bad{color:var(--bad)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:.8rem;padding:.8rem 0;border-bottom:1px dashed var(--line)}
+.row:last-child{border-bottom:0}.row small{color:var(--mute);display:block}
+.row.cancelado{opacity:.45;text-decoration:line-through}.row.concluido b{color:var(--ok)}
+footer{text-align:center;color:var(--mute);font-size:.85rem;margin-top:1.5rem}footer a{color:var(--mute)}
