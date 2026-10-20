@@ -46,3 +46,20 @@ begin
 end $$;
 create trigger trg_conflito before insert on agendamentos
   for each row execute function checa_conflito();
+
+-- ===== PARTE 2: WhatsApp do profissional =====
+-- Se você já rodou a parte 1, rode somente daqui para baixo.
+create table configuracoes (
+  id int primary key default 1 check (id = 1),
+  whatsapp text not null default ''
+);
+insert into configuracoes (id) values (1);
+alter table configuracoes enable row level security;
+
+-- O número do WhatsApp precisa ser público (o cliente envia a mensagem para ele).
+create policy "todos leem" on configuracoes for select to anon, authenticated using (true);
+
+-- Só o profissional altera. (Troque SEU_EMAIL_AQUI pelo mesmo e-mail de antes.)
+create policy "profissional altera" on configuracoes for all to authenticated
+  using ((auth.jwt() ->> 'email') = 'SEU_EMAIL_AQUI')
+  with check ((auth.jwt() ->> 'email') = 'SEU_EMAIL_AQUI');
